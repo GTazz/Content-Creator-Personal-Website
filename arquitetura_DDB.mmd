@@ -16,7 +16,7 @@ erDiagram
         VARCHAR(15) tipo
         VARCHAR(80) nome_usuario
         VARCHAR(500) url_perfil
-        int ordem_exibicao
+        INT ordem_exibicao
     }
 
     DESTAQUE_PUBLICIDADE {
@@ -49,13 +49,10 @@ erDiagram
         DECIMAL taxa_crescimento_perfil
         DATE coleta_dados_data
     }
-    
-    USUARIO_ADMIN {
-        VARCHAR(255) hash_senha
-    }
 
     MENSAGEM_CONTATO {
         INT id_mensagem_contato PK
+        INT id_perfil_criador FK
         VARCHAR(120) nome
         VARCHAR(254) email_contato
         VARCHAR(140) empresa
@@ -63,7 +60,12 @@ erDiagram
         TEXT mensagem
     }
     
+    USUARIO_ADMIN {
+        VARCHAR(255) hash_senha
+    }
+    
+    PERFIL_CRIADOR ||--o{ MENSAGEM_CONTATO : recebe
     PERFIL_CRIADOR ||--o{ REDE_SOCIAL : possui
     REDE_SOCIAL ||--|| METRICA : possui
-    PERFIL_CRIADOR ||--o{ DESTAQUE_PUBLICIDADE : possui
-    PERFIL_CRIADOR ||--o{ DESTAQUE_CONTEUDO : possui
+    PERFIL_CRIADOR ||--o{ DESTAQUE_PUBLICIDADE : posta
+    PERFIL_CRIADOR ||--o{ DESTAQUE_CONTEUDO : posta
