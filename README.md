@@ -4,74 +4,56 @@ Content creator personal website
 ## Diagrama Banco de Dados
 ```mermaid
 erDiagram
-    PERFIL_CRIADOR {
-        INT id_perfil_criador PK
-        VARCHAR(150) nome_completo
-        VARCHAR(120) titulo_profissional
-        VARCHAR(280) bio_curta
-        TEXT bio_longa
-        VARCHAR(500) url_foto_perfil
-        VARCHAR(254) email_contato
-        VARCHAR(120) localizacao
+    USUARIO_ADMIN {
+        VARCHAR(255) hash_senha
     }
+    
+    METRICAS_GERAIS {
+        BIGINT seguidores
+        BIGINT visualizaoes_mensais
+        FLOAT taxa_engajamento
+        BIGINT alcance
+        BIGINT compartilhamento
 
-    REDE_SOCIAL {
-        INT id_rede_social PK
-        INT id_perfil_criador FK
-        VARCHAR(15) tipo
-        VARCHAR(80) nome_usuario
-        VARCHAR(500) url_perfil
-        INT ordem_exibicao
+        INT min_idade_publico
+        INT max_idade_publico
+        FLOAT taxa_publio_brasil
+        FLOAT taxa_publio_masculino
+        VARCHAR(100) interesses_publico 
+
+        DATE data_coleta_dados
     }
+    
+    METRICAS_POR_REDE_SOCIAL {
+        VARCHAR(10) nome_rede_social PK
+        BIGINT seguidores
 
-    DESTAQUE_PUBLICIDADE {
-        INT id_publicidade PK
-        INT id_perfil_criador FK
-        VARCHAR(140) titulo
-        VARCHAR(320) descricao
-        VARCHAR(50) nome_empresa
-        DATE data_publicidade
-        INT ordem_exibicao
-    }
+        FLOAT taxa_engajamento
+        BIGINT alcance
+        BIGINT visualizaoes
+        BIGINT likes
+        BIGINT comentarios
+        BIGINT compartilhamentos
 
-    DESTAQUE_CONTEUDO {
-        INT id_destaque_conteudo PK
-        INT id_perfil_criador FK
-        VARCHAR(15) tipo
-        VARCHAR(140) titulo
-        VARCHAR(320) descricao
-        VARCHAR(500) url_externa
-        INT ordem_exibicao
-    }
-
-    METRICA {
-        INT id_metrica PK
-        INT id_rede_social FK
-        BIGINT seguidores_qtd
-        BIGINT alcance_qtd
-        BIGINT visualizacoes_qtd
-        DECIMAL taxa_engajamento
-        DECIMAL taxa_crescimento_perfil
-        DATE coleta_dados_data
+        INT min_idade_publico
+        INT max_idade_publico
+        FLOAT taxa_publio_brasil
+        FLOAT taxa_publio_masculino
+        VARCHAR(100) interesses_publico 
+        
+        VARCHAR(100) tipo_conteudo 
+        VARCHAR(100) frequencia_postagem
+        VARCHAR(100) melhor_performance
+        
+        DATE data_coleta_dados
     }
 
     MENSAGEM_CONTATO {
         INT id_mensagem_contato PK
-        INT id_perfil_criador FK
         VARCHAR(120) nome
         VARCHAR(254) email_contato
         VARCHAR(140) empresa
         VARCHAR(160) assunto
         TEXT mensagem
     }
-    
-    USUARIO_ADMIN {
-        VARCHAR(255) hash_senha
-    }
-    
-    PERFIL_CRIADOR ||--o{ MENSAGEM_CONTATO : recebe
-    PERFIL_CRIADOR ||--o{ REDE_SOCIAL : possui
-    REDE_SOCIAL ||--|| METRICA : possui
-    PERFIL_CRIADOR ||--o{ DESTAQUE_PUBLICIDADE : posta
-    PERFIL_CRIADOR ||--o{ DESTAQUE_CONTEUDO : posta
 ```
