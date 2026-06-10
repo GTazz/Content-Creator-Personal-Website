@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Métricas por Rede{% endblock %}
+
+{% block content %}
+<div class="metrics-container page-container">
+  <!-- Seletor de plataforma -->
+  <div class="platform-tabs">
+    <button class="tab-btn" data-platform="youtube">YouTube</button>
+    <button class="tab-btn" data-platform="instagram">Instagram</button>
+    <button class="tab-btn" data-platform="tiktok">TikTok</button>
+  </div>
+
+  {% include 'pages/metricas/youtube.html' %}
+
+  {% include 'pages/metricas/instagram.html' %}
+
+  {% include 'pages/metricas/tiktok.html' %}
+
+</div>
+{% endblock %}

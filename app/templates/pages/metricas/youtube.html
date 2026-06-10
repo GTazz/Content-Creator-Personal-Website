@@ -1,0 +1,185 @@
+<div class="platform-panel active" id="youtube-panel">
+
+    <div class="metrics-row">
+
+        <div class="big-metric-card card">
+            <a class="social-link" href="https://www.youtube.com/@Exquil0." target="_blank">
+                <div class="card-header-vertical">
+                    <i class="fab fa-youtube"></i>
+                    <span class="channel-name">@Exquil0.</span>
+                </div>
+
+                <div class="big-stat">
+                    <span><i class="fas fa-users"></i> Seguidores</span>
+                    <span>{{ redes.youtube.seguidores | format_thousands }}</span>
+                </div>
+                <div class="big-stat">
+                    <span><i class="fas fa-heart"></i> Engajamento</span>
+                    <span>{{ redes.youtube.taxa_engajamento | format_decimal }}%</span>
+                </div>
+                <div class="big-stat">
+                    <span><i class="fas fa-chart-line"></i> Alcance</span>
+                    <span>{{ redes.youtube.alcance | format_thousands }}</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="small-metrics">
+            <div class="small-card card"><i class="fas fa-eye"></i>
+                <div>Visualizações</div><strong>{{ redes.youtube.visualizacoes | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-thumbs-up"></i>
+                <div>Likes</div><strong>{{ redes.youtube.likes | format_thousands }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-comment"></i>
+                <div>Comentários</div><strong>{{ redes.youtube.comentarios | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-share-alt"></i>
+                <div>Compartilhamentos</div><strong>{{ redes.youtube.compartilhamentos | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="info-card card">
+            <h3><i class="fas fa-users"></i> Demografia</h3>
+            <div><span>Idade:</span> {{ redes.youtube.min_idade_publico }}-{{ redes.youtube.max_idade_publico }} anos
+                <div>
+                    <div style="width:75%"></div>
+                </div>
+            </div>
+            <div><span>Localização:</span> Brasil {{ redes.youtube.taxa_publico_brasil | format_decimal }}% <div>
+                <div style="width:{{ redes.youtube.taxa_publico_brasil }}%"></div>
+            </div>
+        </div>
+        <div><span>Interesses:</span> {{ redes.youtube.interesses_publico }}</div>
+        <div><span>Gênero:</span> {{ (100 - redes.youtube.taxa_publico_masculino) | format_decimal }}% Fem / {{
+            redes.youtube.taxa_publico_masculino | format_decimal }}% Masc <div class="progress-bar-fill">
+                <div style="width:{{ 100 - redes.youtube.taxa_publico_masculino }}%; background:#ec489a"></div>
+                <div style="width:{{ redes.youtube.taxa_publico_masculino }}%; background:#3b82f6"></div>
+            </div>
+        </div>
+        </div>
+        <div class="info-card card">
+            <h3><i class="fas fa-video"></i> Conteúdo</h3>
+            <div><span>Tipo:</span> {{ redes.youtube.tipo_conteudo }}</div>
+            <div><span>Melhor performance:</span> {{ redes.youtube.melhor_performance }}</div>
+            <div><span>Frequência:</span> {{ redes.youtube.frequencia_postagem }}</div>
+        </div>
+    </div>
+
+    <div class="last-update">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Última atualização:
+            {{ redes.youtube.data_coleta_dados.strftime('%d/%m/%Y') }}
+        </span>
+    </div>
+
+
+    <div class="section-header">
+        <i class="fas fa-film"></i>
+        <h2>Vídeos Longos</h2>
+    </div>
+    <div class="videos-grid videos-longos">
+
+        {% set video_id = 'B7zP0wvDI0U' %}
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v={{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb horizontal">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}" target="_blank">Os fãs
+                    R4CISTAS dessa TikToker estão me atacando!</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +1,6M visualizações</div>
+        </div>
+
+        {% set video_id = 'GNuFs49_MV8' %}
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v={{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb horizontal">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}" target="_blank">Essa
+                    Maluca quer M4TAR uma influenciadora</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +1,3M visualizações</div>
+        </div>
+
+        {% set video_id = 'REHDhxhRSqo' %}
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v={{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb horizontal">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}" target="_blank">A
+                    Confeiteira INVEJOSA do TIKTOK (Doces da Tai)</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +1M visualizações</div>
+        </div>
+
+        {% set video_id = 'X6DvoLEztyA' %}
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v={{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb horizontal">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}" target="_blank">Derrubou a
+                    mulher na FUGA e CHOROU pedindo desculpas kkkkk | Fugas de motos #3</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +857k visualizações</div>
+        </div>
+
+    </div>
+
+    <div class="section-header">
+        <i class="fas fa-mobile-alt"></i>
+        <h2>Vídeos Curtos (Shorts)</h2>
+    </div>
+    <div class="videos-grid videos-curtos">
+
+        {% set video_id = '3C_a3oRuqso' %}
+        <div class="video-card short">
+            <a href="https://www.youtube.com/shorts/{{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/shorts/{{ video_id }}" target="_blank">Ele foi
+                    julgado por algo que não fez</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +26M visualizações</div>
+        </div>
+
+        {% set video_id = 'MqrXv4wFKI0' %}
+        <div class="video-card short">
+            <a href="https://www.youtube.com/shorts/{{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/shorts/{{ video_id }}" target="_blank">Meteram o
+                    11 de Setembro do nada 😭</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +17M visualizações</div>
+        </div>
+
+        {% set video_id = 'QIIpV0L_kyM' %}
+        <div class="video-card short">
+            <a href="https://www.youtube.com/shorts/{{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/shorts/{{ video_id }}" target="_blank">Desafio com
+                    deficientes</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +8,9M visualizações</div>
+        </div>
+
+        {% set video_id = 'ds1UAVVypRc' %}
+        <div class="video-card short">
+            <a href="https://www.youtube.com/shorts/{{ video_id }}" class="video-thumb-link" target="_blank">
+                <img src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg" alt="thumbnail"
+                    class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.youtube.com/shorts/{{ video_id }}" target="_blank">Esse mlk
+                    vai falir a avó dele</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +7,8M visualizações</div>
+        </div>
+
+    </div>
+</div>

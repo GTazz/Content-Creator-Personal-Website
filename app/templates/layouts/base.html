@@ -1,0 +1,29 @@
+{% set phone = "+55 (11) 98907-6111" %}
+{% set phone_raw = "+5511989076111" %}
+{% set email = "exquilofoxie@gmail.com" %}
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Exquilo · {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    {% include 'layouts/header.html' %}
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+
+</html>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>

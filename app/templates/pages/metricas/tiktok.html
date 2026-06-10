@@ -1,0 +1,136 @@
+<div class="platform-panel active" id="tiktok-panel">
+
+  <div class="metrics-row">
+
+    <div class="big-metric-card card">
+      <a class="social-link" href="https://www.tiktok.com/@exquil0._" target="_blank">
+        <div class="card-header-vertical">
+          <i class="fab fa-tiktok"></i>
+          <span class="channel-name">@exquil0._</span>
+        </div>
+
+        <div class="big-stat">
+          <span><i class="fas fa-users"></i> Seguidores</span>
+          <span>{{ redes.tiktok.seguidores | format_thousands }}</span>
+        </div>
+        <div class="big-stat">
+          <span><i class="fas fa-heart"></i> Engajamento</span>
+          <span>{{ redes.tiktok.taxa_engajamento | format_decimal }}%</span>
+        </div>
+        <div class="big-stat">
+          <span><i class="fas fa-chart-line"></i> Alcance</span>
+          <span>{{ redes.tiktok.alcance | format_thousands }}</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="small-metrics">
+      <div class="small-card card"><i class="fas fa-eye"></i>
+        <div>Visualizações</div><strong>{{ redes.tiktok.visualizacoes | format_thousands
+          }}</strong><span>totais</span>
+      </div>
+      <div class="small-card card"><i class="fas fa-thumbs-up"></i>
+        <div>Likes</div><strong>{{ redes.tiktok.likes | format_thousands }}</strong><span>totais</span>
+      </div>
+      <div class="small-card card"><i class="fas fa-comment"></i>
+        <div>Comentários</div><strong>{{ redes.tiktok.comentarios | format_thousands
+          }}</strong><span>totais</span>
+      </div>
+      <div class="small-card card"><i class="fas fa-share-alt"></i>
+        <div>Compartilhamentos</div><strong>{{ redes.tiktok.compartilhamentos | format_thousands
+          }}</strong><span>totais</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="info-card card">
+      <h3><i class="fas fa-users"></i> Demografia</h3>
+      <div><span>Idade:</span> {{ redes.tiktok.min_idade_publico }}-{{ redes.tiktok.max_idade_publico }}
+        anos
+        <div>
+          <div style="width:75%"></div>
+        </div>
+      </div>
+      <div><span>Localização:</span> Brasil {{ redes.tiktok.taxa_publico_brasil | format_decimal }}% <div>
+          <div style="width:{{ redes.tiktok.taxa_publico_brasil }}%"></div>
+        </div>
+      </div>
+      <div><span>Interesses:</span> {{ redes.tiktok.interesses_publico }}</div>
+      <div><span>Gênero:</span> {{ (100 - redes.tiktok.taxa_publico_masculino) | format_decimal }}% Fem / {{
+        redes.tiktok.taxa_publico_masculino | format_decimal }}% Masc <div class="progress-bar-fill">
+          <div style="width:{{ 100 - redes.tiktok.taxa_publico_masculino }}%; background:#ec489a"></div>
+          <div style="width:{{ redes.tiktok.taxa_publico_masculino }}%; background:#3b82f6"></div>
+        </div>
+      </div>
+    </div>
+    <div class="info-card card">
+      <h3><i class="fas fa-video"></i> Conteúdo</h3>
+      <div><span>Tipo:</span> {{ redes.tiktok.tipo_conteudo }}</div>
+      <div><span>Melhor performance:</span> {{ redes.tiktok.melhor_performance }}</div>
+      <div><span>Frequência:</span> {{ redes.tiktok.frequencia_postagem }}</div>
+    </div>
+  </div>
+
+  <div class="last-update">
+    <i class="fas fa-calendar-alt"></i>
+    <span>Última atualização:
+      {{ redes.tiktok.data_coleta_dados.strftime('%d/%m/%Y') }}
+    </span>
+  </div>
+
+  <div class="section-header">
+    <i class="fas fa-mobile-alt"></i>
+    <h2>Vídeos Curtos (TikToks)</h2>
+  </div>
+  <div class="videos-grid videos-curtos">
+
+    {% set video_id = '7177153689495391493' %}
+    <div class="video-card short">
+      <a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" class="video-thumb-link" target="_blank">
+        <img
+          src="https://p16-common-sign.tiktokcdn.com/tos-maliva-p-0068/27437d60a0824c208502a1f85550941d_1671061336~tplv-tiktokx-origin.image?dr=14575&x-expires=1781229600&x-signature=EowUWCjh0JbU8GHTIB5FTyUd4kY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="video-title"><a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" target="_blank">A véi
+          ksksksksksk</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +14,5M visualizações</div>
+    </div>
+
+    {% set video_id = '7158167537006464262' %}
+    <div class="video-card short">
+      <a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" class="video-thumb-link" target="_blank">
+        <img
+          src="https://p16-common-sign.tiktokcdn.com/tos-maliva-p-0068/3eeb7ec455224527a28daf0ee25417bc~tplv-tiktokx-origin.image?dr=14575&x-expires=1781229600&x-signature=uTepZ3%2FDC4gHcAWDmWanqP5%2FiL8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="video-title"><a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" target="_blank">Maluco
+          ainda saiu no lucro ksksksksks</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +8,7M visualizações</div>
+    </div>
+
+    {% set video_id = '7065369186008091909' %}
+    <div class="video-card short">
+      <a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" class="video-thumb-link" target="_blank">
+        <img
+          src="https://p19-common-sign.tiktokcdn.com/tos-maliva-p-0068/7120ea995d8b4f41942577ab89d9d5dc~tplv-tiktokx-origin.image?dr=14575&x-expires=1781229600&x-signature=aLW5AJBfxOUKbV9k4qWtq5VAkrI%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="video-title"><a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" target="_blank">Olha o
+          dedo desse cara</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +6,5M visualizações</div>
+    </div>
+
+    {% set video_id = '7053511012552609030' %}
+    <div class="video-card short">
+      <a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" class="video-thumb-link" target="_blank">
+        <img
+          src="https://p16-common-sign.tiktokcdn.com/tos-maliva-p-0068/23313e6176e94bdf8d05a500d740fe19~tplv-photomode-zoomcover:720:720.jpeg?dr=14555&x-expires=1781229600&x-signature=aAAxSTlB4H13yBM2RbMMxKvZLOE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2&ftpl=1"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="video-title"><a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" target="_blank">Olha o
+          dedo desse cara</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +5,6M visualizações</div>
+    </div>
+
+  </div>

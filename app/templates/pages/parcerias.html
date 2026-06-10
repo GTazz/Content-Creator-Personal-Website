@@ -1,0 +1,169 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Parcerias{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+  <!-- Título principal da página (único, com descrição sutil) -->
+  <div class="page-header-simple">
+    <i class="fas fa-handshake"></i>
+    <h1>Parcerias</h1>
+    <p class="page-subtitle">Conteúdos produzidos em parceria com marcas – desempenho e engajamento</p>
+  </div>
+  <!-- ========== CARROSSEL AUTOMÁTICO (SEM INTERAÇÃO) ========== -->
+  <div class="section-header">
+    <i class="fas fa-building"></i>
+    <h2>Marcas que já confiaram</h2>
+  </div>
+
+  <div class="carousel-autoplay">
+    <div class="carousel-track-auto">
+
+      <div class="brand-logo-item"><img
+          src="https://mms.businesswire.com/media/20220901005404/pt/1559296/4/Hollyland_logo-500x500.jpg"
+          alt="Hollyland"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzh72pQokWCTphzmlDHnW6t3Xm0Sb1HdrDwOamSbp7sz0eIFIC8yiODmw&s=10"
+          alt="Fifine"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://assets.cuponomia.com.br/img/stores/original/manual-637735213625120363.png" alt="Manual"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp-wbKjLoYbm00s7Bmfiezi80zaamUu8QLXuXchaaoH6481LSMrZqhrZQf4VpwKGvUVNfO6CcItzLGOi7NWDMGEYhQcDmeFwY9b_R16lCKlG5Z1i7YqNvXLUdWwAkhK8TCVXWNF5E3aBXnKj9FZLr0CzO_A_X7kH_IrdP4LyGikeFSw-CVq0ZS/s16000/keeta%20logo.jpg"
+          alt="Keeta"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStAhLefXquhMl-37wnZ9SVslpUvETjmDdpqoUiBJDfWr_K5-bQ5NurEN-S&s=10"
+          alt="Growth"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://cupomdedescontos.com.br/wp-content/uploads/2023/08/logo-principia.png" alt="Principia"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://vectorseek.com/wp-content/uploads/2023/07/Ebac-Logo-Vector.svg-.png" alt="Ebac"></div>
+
+      <!-- Clonagem dos mesmos itens para suavizar o loop -->
+      <div class="brand-logo-item"><img
+          src="https://mms.businesswire.com/media/20220901005404/pt/1559296/4/Hollyland_logo-500x500.jpg"
+          alt="Hollyland"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzh72pQokWCTphzmlDHnW6t3Xm0Sb1HdrDwOamSbp7sz0eIFIC8yiODmw&s=10"
+          alt="Fifine"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://assets.cuponomia.com.br/img/stores/original/manual-637735213625120363.png" alt="Manual"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp-wbKjLoYbm00s7Bmfiezi80zaamUu8QLXuXchaaoH6481LSMrZqhrZQf4VpwKGvUVNfO6CcItzLGOi7NWDMGEYhQcDmeFwY9b_R16lCKlG5Z1i7YqNvXLUdWwAkhK8TCVXWNF5E3aBXnKj9FZLr0CzO_A_X7kH_IrdP4LyGikeFSw-CVq0ZS/s16000/keeta%20logo.jpg"
+          alt="Keeta"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStAhLefXquhMl-37wnZ9SVslpUvETjmDdpqoUiBJDfWr_K5-bQ5NurEN-S&s=10"
+          alt="Growth"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://cupomdedescontos.com.br/wp-content/uploads/2023/08/logo-principia.png" alt="Principia"></div>
+
+      <div class="brand-logo-item"><img
+          src="https://vectorseek.com/wp-content/uploads/2023/07/Ebac-Logo-Vector.svg-.png" alt="Ebac"></div>
+
+    </div>
+  </div>
+
+  <div class="section-header">
+    <i class="fas fa-film"></i>
+    <h2>Vídeos Longos</h2>
+  </div>
+  <div class="videos-grid videos-longos">
+
+    {% set video_id = 'Gh6-33EC1z8' %}
+    {% set video_tempo = '6m19s' %}
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}" class="video-thumb-link"
+        target="_blank">
+        <img
+          src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC92N-wyuvccmSfxM1qhUJdl3YRpg"
+          alt="thumbnail" class="video-thumb horizontal">
+      </a>
+      <div class="brand-badge"><i class="fas fa-tag"></i> Empresa: <strong>Manual</strong></div>
+      <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}"
+          target="_blank"><span class="social-icon youtube"><i class="fab fa-youtube"></i></span>Influenciadora FOLGADA
+          sendo colocada em seu devido lugar</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +368k visualizações</div>
+    </div>
+
+    {% set video_id = 'aPGNNSQE7dM' %}
+    {% set video_tempo = '7m56s' %}
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}" class="video-thumb-link"
+        target="_blank">
+        <img
+          src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC92N-wyuvccmSfxM1qhUJdl3YRpg"
+          alt="thumbnail" class="video-thumb horizontal">
+      </a>
+      <div class="brand-badge"><i class="fas fa-tag"></i> Empresa: <strong>GROWTH</strong></div>
+      <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}"
+          target="_blank"><span class="social-icon youtube"><i class="fab fa-youtube"></i></span>A INFLUENCIADORA QUE
+          BATE NA MÃE</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +261k visualizações</div>
+    </div>
+
+    {% set video_id = 'YJQGRnxu00Q' %}
+    {% set video_tempo = '43s' %}
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}" class="video-thumb-link"
+        target="_blank">
+        <img
+          src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC92N-wyuvccmSfxM1qhUJdl3YRpg"
+          alt="thumbnail" class="video-thumb horizontal">
+      </a>
+      <div class="brand-badge"><i class="fas fa-tag"></i> Empresa: <strong>EBAC</strong></div>
+      <div class="video-title"><a href="https://www.youtube.com/watch?v={{ video_id }}&t={{ video_tempo }}"
+          target="_blank"><span class="social-icon youtube"><i class="fab fa-youtube"></i></span>EU QUASE MORRI
+          NO BLOQUINHO PATÉTICO DO CALVIN HARRIS</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +56k visualizações</div>
+    </div>
+
+  </div>
+
+
+  <div class="section-header">
+    <i class="fas fa-mobile-alt"></i>
+    <h2>Vídeos Curtos (Shorts / Reels / TikTok)</h2>
+  </div>
+  <div class="videos-grid videos-curtos">
+
+    {% set video_id = '7605680581006970132' %}
+    <div class="video-card short">
+      <a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" class="video-thumb-link" target="_blank">
+        <img
+          src="https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/o0LxHA6TGAzQDUzAIeLZEjnE4OZeQeMAIYsAIG~tplv-photomode-zoomcover:720:720.jpeg?dr=14555&x-expires=1781229600&x-signature=6Rm4vXq5A4qsyqWaPddR41aRSH8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2&ftpl=1"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="brand-badge"><i class="fas fa-tag"></i> Empresa: <strong>BlockBlast</strong></div>
+      <div class="video-title"><a href="https://www.tiktok.com/@exquil0._/video/{{ video_id }}" target="_blank"><span
+            class="social-icon tiktok"><i class="fab fa-tiktok"></i></span>Eu sempre kkkkk</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +15,1M visualizações</div>
+    </div>
+
+    {% set video_id = 'C5hG4rROv96' %}
+    <div class="video-card short">
+      <a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" class="video-thumb-link" target="_blank">
+        <img
+          src="https://instagram.fgru4-1.fna.fbcdn.net/v/t51.71878-15/503049815_1222151962775927_2713439814576012857_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzM0MTk4MjY4MTUxNTM2MDEyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=vqIE_Vg0r3sQ7kNvwHX4TuX&_nc_oc=AdqzxEdI4Jc3ZKYLsn7GwSi1SXrfSOYnp6p6KlnbNjKICHVsxikmiN_RxTN-YsQs_99Zj3VuOdioorCT5Q2l2Q-h&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fgru4-1.fna&_nc_gid=mctRUSe-9AOAfUMHCXvlYQ&_nc_ss=7a22e&oh=00_Af-Yg9elL2o_TQ_FiyBep7inWsnCeVynsRWfj44PuMMZHA&oe=6A2ECC5F"
+          alt="thumbnail" class="video-thumb vertical">
+      </a>
+      <div class="brand-badge"><i class="fas fa-tag"></i> Empresa: <strong>SadBaile</strong></div>
+      <div class="video-title"><a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" target="_blank"><span
+            class="social-icon instagram"><i class="fab fa-instagram"></i></span>Fui
+          convidado pro SadBaile E FOI MUITO PIKA!!!!</a></div>
+      <div class="video-stats"><i class="fas fa-eye"></i> +19,9K visualizações</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

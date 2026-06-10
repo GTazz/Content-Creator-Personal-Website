@@ -1,0 +1,15 @@
+<footer class="simple-footer">
+  <div class="footer-content">
+    <div class="footer-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:{{ email }}">{{ email }}</a>
+    </div>
+    <div class="footer-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:{{ phone_raw }}">{{ phone }}</a>
+    </div>
+  </div>
+  <div class="footer-copyright" style="text-align: center; font-size: 0.7rem; color: #94a3b8; padding: 0.5rem 0 0;">
+    &copy; {{ year if year else 2026 }} Exquilo. Todos os direitos reservados.
+  </div>
+</footer>

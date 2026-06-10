@@ -1,0 +1,173 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+
+{% block content %}
+<div class="dashboard-container page-container">
+
+  <!-- =================== SEÇÃO INÍCIO =================== -->
+  <div class="section-spacing">
+    <div class="card">
+      <div class="profile-wrapper">
+        <div class="avatar-box">
+          <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Foto de Perfil">
+        </div>
+        <div class="profile-info">
+          <h1>Exquilo</h1>
+          <div class="followers-badge">
+            <i class="fas fa-users"></i>
+            {{ metricas_gerais.seguidores | format_suffix }} de Seguidores
+          </div>
+          <div class="bio-text">
+            🐿️ Sou o Esquilo. Faço vídeos para YouTube, Instagram e TikTok, com foco em vídeos longos. Aqui você
+            encontra humor e fofoca contados de forma leve e divertida. Se gosta de entretenimento pra perder a hora sem
+            perceber, seja bem-vindo.
+
+          </div>
+        </div>
+        <div class="platform-stats">
+          <a href="{{ url_for('public.metricas') }}?tab=youtube" class="platform-stat">
+            <i class="fab fa-youtube"></i>
+            <span>{{ redes.youtube.seguidores | format_suffix }}</span>
+          </a>
+          <a href="{{ url_for('public.metricas') }}?tab=instagram" class="platform-stat">
+            <i class="fab fa-instagram"></i>
+            <span>{{ redes.instagram.seguidores | format_suffix }}</span>
+          </a>
+          <a href="{{ url_for('public.metricas') }}?tab=tiktok" class="platform-stat">
+            <i class="fab fa-tiktok"></i>
+            <span>{{ redes.tiktok.seguidores | format_suffix }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== SEÇÃO MÉTRICAS (Performance + Público) =================== -->
+  <div class="section-spacing">
+    <div class="section-header">
+      <i class="fas fa-chart-line"></i>
+      <h2>Métricas de Performance</h2>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fas fa-eye"></i></div>
+        <h4>Visualizações mensais</h4>
+        <div class="metric-value">{{ metricas_gerais.visualizacoes_mensais | format_suffix }}</div>
+        <div class="metric-sub">Alta retenção de público</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fas fa-heart"></i></div>
+        <h4>Engajamento médio</h4>
+        <div class="metric-value">{{ metricas_gerais.taxa_engajamento | format_decimal }}%</div>
+        <div class="metric-sub">Taxa de interação (curtidas/comentários)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fas fa-chart-pie"></i></div>
+        <h4>Alcance orgânico</h4>
+        <div class="metric-value">{{ metricas_gerais.alcance | format_suffix }}</div>
+        <div class="metric-sub">Pessoas únicas alcançadas</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fas fa-share-alt"></i></div>
+        <h4>Compartilhamentos</h4>
+        <div class="metric-value">{{ metricas_gerais.compartilhamento | format_suffix }}</div>
+        <div class="metric-sub">Conteúdo viral + menções</div>
+      </div>
+    </div>
+
+    <!-- Bloco PÚBLICO GERAL (sem formatação adicional) -->
+    <div class="section-header" style="margin-top: 1rem;">
+      <i class="fas fa-users"></i>
+      <h2>Público Geral</h2>
+    </div>
+
+    <div class="audience-grid">
+
+      <!-- IDADE (com texto descritivo) -->
+      <div class="info-item">
+        <div class="info-label"><i class="fas fa-calendar-alt"></i> IDADE</div>
+        <div class="age-value">{{ metricas_gerais.min_idade_publico }}-{{ metricas_gerais.max_idade_publico }} anos
+        </div>
+        <div class="age-description">Faixa etária predominante do público</div>
+      </div>
+
+      <!-- LOCALIZAÇÃO (sem repetição) -->
+      <div class="info-item">
+        <div class="info-label"><i class="fas fa-globe-americas"></i> LOCALIZAÇÃO</div>
+        <div><strong>Brasil</strong> ({{ metricas_gerais.taxa_publico_brasil | format_decimal }}%) &nbsp; | &nbsp;
+          <strong>Global</strong> ({{ (100 - metricas_gerais.taxa_publico_brasil) | format_decimal }}%)
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-br" style="width: {{ metricas_gerais.taxa_publico_brasil }}%; background: #3b82f6;">
+          </div>
+          <div class="progress-global"
+            style="width: {{ 100 - metricas_gerais.taxa_publico_brasil }}%; background: #10b981;"></div>
+        </div>
+        <div class="percentage-row">
+          <span><i class="fas fa-flag-checkered"></i> Brasil: {{ metricas_gerais.taxa_publico_brasil | format_decimal
+            }}%</span>
+          <span><i class="fas fa-earth-americas"></i> Global: {{ (100 - metricas_gerais.taxa_publico_brasil) |
+            format_decimal }}%</span>
+        </div>
+      </div>
+
+      <!-- GÊNERO (sem alteração) -->
+      <div class="info-item">
+        <div class="info-label"><i class="fas fa-venus-mars"></i> GÊNERO</div>
+        <div class="gender-bar">
+          <span><i class="fas fa-female" style="color:#ec489a;"></i> {{ (100 - metricas_gerais.taxa_publico_masculino) |
+            format_decimal }}% feminino</span>
+          <span><i class="fas fa-male" style="color:#3b82f6;"></i> {{ metricas_gerais.taxa_publico_masculino |
+            format_decimal }}% masculino</span>
+        </div>
+        <div class="gender-fill">
+          <div class="female-part" style="width: {{ 100 - metricas_gerais.taxa_publico_masculino }}%;"></div>
+          <div class="male-part" style="width: {{ metricas_gerais.taxa_publico_masculino }}%;"></div>
+        </div>
+        <div class="percentage-row" style="margin-top: 6px;">
+          <span>Feminino {{ (100 - metricas_gerais.taxa_publico_masculino) | format_decimal }}%</span>
+          <span>Masculino {{ metricas_gerais.taxa_publico_masculino | format_decimal }}%</span>
+        </div>
+      </div>
+
+      <!-- INTERESSES (lista em ordem alfabética, Top 3 mantém ordem original) -->
+      <div class="info-item">
+        <div class="info-label"><i class="fas fa-heart"></i> INTERESSES DO PÚBLICO</div>
+        {% set interesses_raw = metricas_gerais.interesses_publico.split(',') %}
+        {% set interesses_sorted = interesses_raw | sort %}
+        <div class="interests-tags">
+          {% for interesse in interesses_sorted %}
+          <span class="tag"><i class="fas fa-tag"></i> {{ interesse.strip() }}</span>
+          {% endfor %}
+        </div>
+        <div class="percentage-row" style="margin-top: 1rem;">
+          <span>🔝 Top 3:
+            {% for interesse in interesses_raw[:3] %}
+            {{ interesse.strip() }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DATA ===== -->
+  <div class="last-update">
+    <i class="fas fa-calendar-alt"></i>
+    <span>Última atualização:
+      {% if metricas_gerais and metricas_gerais.data_coleta_dados %}
+      {{ metricas_gerais.data_coleta_dados.strftime('%d/%m/%Y') }}
+      {% else %}
+      não disponível
+      {% endif %}
+    </span>
+  </div>
+
+</div>
+{% endblock %}
+

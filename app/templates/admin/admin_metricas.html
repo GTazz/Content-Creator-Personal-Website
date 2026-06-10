@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exquilo · Editar Métricas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_style.css') }}">
+</head>
+{% if db_error %}
+{% include 'layouts/db_error.html' %}
+{% else %}
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1><i class="fas fa-chart-line"></i> Edição de Métricas</h1>
+      <a href="{{ url_for('admin.logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </div>
+
+    <!-- Ferramentas JSON -->
+    <div class="json-tools">
+      <div class="json-header">
+        <h3><i class="fas fa-code"></i> Importar/Exportar via JSON (hierárquico)</h3>
+        <div class="json-buttons">
+          <label class="json-btn" for="uploadJsonInput"><i class="fas fa-upload"></i> Upload JSON</label>
+          <input type="file" id="uploadJsonInput" accept="application/json" style="display: none;">
+          <button class="json-btn" id="pasteJsonBtn"><i class="fas fa-paste"></i> Colar JSON</button>
+          <button class="json-btn" id="copyExampleJsonBtn"><i class="fas fa-copy"></i> Copiar exemplo</button>
+          <a class="json-btn" id="downloadExampleJson" download="exemplo_metricas.json" href="#"><i
+              class="fas fa-download"></i> Baixar exemplo</a>
+        </div>
+      </div>
+      <textarea id="jsonPasteArea" class="json-textarea" rows="3"
+        placeholder="Cole aqui o JSON hierárquico e clique em 'Preencher formulário'..."></textarea>
+      <div class="json-footer">
+        <button class="json-btn json-fill" id="fillFromJsonBtn"><i
+            class="fas fa-fill-drip"></i> Preencher formulário</button>
+        <span><i class="fas fa-info-circle"></i> Campos com valor null não alteram o valor atual.</span>
+      </div>
+    </div>
+
+    <form id="metricsForm">
+      <!-- ================= MÉTRICAS GERAIS ================= -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fas fa-globe"></i>
+          <h2>Métricas Globais (Dashboard Principal)</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="field"><label><i class="fas fa-users"></i> Seguidores</label><input type="text"
+                id="geral_seguidores" value="{{ metricas_gerais.seguidores }}" class="numeric-input"></div>
+            <div class="field"><label><i class="fas fa-eye"></i> Visualizações mensais</label><input type="text"
+                id="geral_visualizacoes_mensais" value="{{ metricas_gerais.visualizacoes_mensais }}"
+                class="numeric-input"></div>
+            <div class="field"><label><i class="fas fa-heart"></i> Taxa de engajamento (%)</label><input type="text"
+                id="geral_taxa_engajamento" value="{{ metricas_gerais.taxa_engajamento }}" class="decimal-input"></div>
+            <div class="field"><label><i class="fas fa-chart-line"></i> Alcance</label><input type="text"
+                id="geral_alcance" value="{{ metricas_gerais.alcance }}" class="numeric-input"></div>
+            <div class="field"><label><i class="fas fa-share-alt"></i> Compartilhamentos</label><input type="text"
+                id="geral_compartilhamento" value="{{ metricas_gerais.compartilhamento }}" class="numeric-input"></div>
+            <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade mínima</label><input type="text"
+                id="geral_min_idade_publico" value="{{ metricas_gerais.min_idade_publico }}" class="integer-input">
+            </div>
+            <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade máxima</label><input type="text"
+                id="geral_max_idade_publico" value="{{ metricas_gerais.max_idade_publico }}" class="integer-input">
+            </div>
+            <div class="field"><label><i class="fas fa-globe-americas"></i> Público Brasil (%)</label><input type="text"
+                id="geral_taxa_publico_brasil" value="{{ metricas_gerais.taxa_publico_brasil }}" class="decimal-input">
+            </div>
+            <div class="field"><label><i class="fas fa-venus-mars"></i> Público masculino (%)</label><input type="text"
+                id="geral_taxa_publico_masculino" value="{{ metricas_gerais.taxa_publico_masculino }}"
+                class="decimal-input"></div>
+            <div class="field"><label><i class="fas fa-tags"></i> Interesses (vírgula)</label><input type="text"
+                id="geral_interesses_publico" value="{{ metricas_gerais.interesses_publico }}"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= REDES SOCIAIS ================= -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fab fa-youtube"></i><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i>
+          <h2>Métricas por Rede Social</h2>
+        </div>
+        <div class="card-body">
+          <!-- YOUTUBE -->
+          <div class="rede-card">
+            <div class="rede-title"><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</div>
+            <div class="rede-content">
+              <div class="form-grid">
+                <div class="field"><label><i class="fas fa-users"></i> Seguidores</label><input type="text"
+                    id="youtube_seguidores" value="{{ redes.youtube.seguidores }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-heart"></i> Taxa engajamento (%)</label><input type="text"
+                    id="youtube_taxa_engajamento" value="{{ redes.youtube.taxa_engajamento }}" class="decimal-input">
+                </div>
+                <div class="field"><label><i class="fas fa-chart-line"></i> Alcance</label><input type="text"
+                    id="youtube_alcance" value="{{ redes.youtube.alcance }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-eye"></i> Visualizações</label><input type="text"
+                    id="youtube_visualizacoes" value="{{ redes.youtube.visualizacoes }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-thumbs-up"></i> Likes</label><input type="text"
+                    id="youtube_likes" value="{{ redes.youtube.likes }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-comment"></i> Comentários</label><input type="text"
+                    id="youtube_comentarios" value="{{ redes.youtube.comentarios }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-share-alt"></i> Compartilhamentos</label><input type="text"
+                    id="youtube_compartilhamentos" value="{{ redes.youtube.compartilhamentos }}" class="numeric-input">
+                </div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade min</label><input type="text"
+                    id="youtube_min_idade_publico" value="{{ redes.youtube.min_idade_publico }}" class="integer-input">
+                </div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade max</label><input type="text"
+                    id="youtube_max_idade_publico" value="{{ redes.youtube.max_idade_publico }}" class="integer-input">
+                </div>
+                <div class="field"><label><i class="fas fa-globe-americas"></i> Público Brasil (%)</label><input
+                    type="text" id="youtube_taxa_publico_brasil" value="{{ redes.youtube.taxa_publico_brasil }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-venus-mars"></i> Público masculino (%)</label><input
+                    type="text" id="youtube_taxa_publico_masculino" value="{{ redes.youtube.taxa_publico_masculino }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-tags"></i> Interesses</label><input type="text"
+                    id="youtube_interesses_publico" value="{{ redes.youtube.interesses_publico }}"></div>
+                <div class="field"><label><i class="fas fa-film"></i> Tipo de conteúdo</label><input type="text"
+                    id="youtube_tipo_conteudo" value="{{ redes.youtube.tipo_conteudo }}"></div>
+                <div class="field"><label><i class="fas fa-calendar-week"></i> Frequência</label><input type="text"
+                    id="youtube_frequencia_postagem" value="{{ redes.youtube.frequencia_postagem }}"></div>
+                <div class="field"><label><i class="fas fa-chart-simple"></i> Melhor performance</label><input
+                    type="text" id="youtube_melhor_performance" value="{{ redes.youtube.melhor_performance }}"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INSTAGRAM -->
+          <div class="rede-card">
+            <div class="rede-title"><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram</div>
+            <div class="rede-content">
+              <div class="form-grid">
+                <div class="field"><label><i class="fas fa-users"></i> Seguidores</label><input type="text"
+                    id="instagram_seguidores" value="{{ redes.instagram.seguidores }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-heart"></i> Taxa engajamento (%)</label><input type="text"
+                    id="instagram_taxa_engajamento" value="{{ redes.instagram.taxa_engajamento }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-chart-line"></i> Alcance</label><input type="text"
+                    id="instagram_alcance" value="{{ redes.instagram.alcance }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-eye"></i> Impressões</label><input type="text"
+                    id="instagram_visualizacoes" value="{{ redes.instagram.visualizacoes }}" class="numeric-input">
+                </div>
+                <div class="field"><label><i class="fas fa-thumbs-up"></i> Curtidas</label><input type="text"
+                    id="instagram_likes" value="{{ redes.instagram.likes }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-comment"></i> Comentários</label><input type="text"
+                    id="instagram_comentarios" value="{{ redes.instagram.comentarios }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-share-alt"></i> Compartilhamentos</label><input type="text"
+                    id="instagram_compartilhamentos" value="{{ redes.instagram.compartilhamentos }}"
+                    class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade min</label><input type="text"
+                    id="instagram_min_idade_publico" value="{{ redes.instagram.min_idade_publico }}"
+                    class="integer-input"></div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade max</label><input type="text"
+                    id="instagram_max_idade_publico" value="{{ redes.instagram.max_idade_publico }}"
+                    class="integer-input"></div>
+                <div class="field"><label><i class="fas fa-globe-americas"></i> Público Brasil (%)</label><input
+                    type="text" id="instagram_taxa_publico_brasil" value="{{ redes.instagram.taxa_publico_brasil }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-venus-mars"></i> Público masculino (%)</label><input
+                    type="text" id="instagram_taxa_publico_masculino"
+                    value="{{ redes.instagram.taxa_publico_masculino }}" class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-tags"></i> Interesses</label><input type="text"
+                    id="instagram_interesses_publico" value="{{ redes.instagram.interesses_publico }}"></div>
+                <div class="field"><label><i class="fas fa-film"></i> Tipo de conteúdo</label><input type="text"
+                    id="instagram_tipo_conteudo" value="{{ redes.instagram.tipo_conteudo }}"></div>
+                <div class="field"><label><i class="fas fa-calendar-week"></i> Frequência</label><input type="text"
+                    id="instagram_frequencia_postagem" value="{{ redes.instagram.frequencia_postagem }}"></div>
+                <div class="field"><label><i class="fas fa-chart-simple"></i> Melhor performance</label><input
+                    type="text" id="instagram_melhor_performance" value="{{ redes.instagram.melhor_performance }}">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TIKTOK -->
+          <div class="rede-card">
+            <div class="rede-title"><i class="fab fa-tiktok"></i> TikTok</div>
+            <div class="rede-content">
+              <div class="form-grid">
+                <div class="field"><label><i class="fas fa-users"></i> Seguidores</label><input type="text"
+                    id="tiktok_seguidores" value="{{ redes.tiktok.seguidores }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-heart"></i> Taxa engajamento (%)</label><input type="text"
+                    id="tiktok_taxa_engajamento" value="{{ redes.tiktok.taxa_engajamento }}" class="decimal-input">
+                </div>
+                <div class="field"><label><i class="fas fa-chart-line"></i> Alcance</label><input type="text"
+                    id="tiktok_alcance" value="{{ redes.tiktok.alcance }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-eye"></i> Visualizações</label><input type="text"
+                    id="tiktok_visualizacoes" value="{{ redes.tiktok.visualizacoes }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-thumbs-up"></i> Curtidas</label><input type="text"
+                    id="tiktok_likes" value="{{ redes.tiktok.likes }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-comment"></i> Comentários</label><input type="text"
+                    id="tiktok_comentarios" value="{{ redes.tiktok.comentarios }}" class="numeric-input"></div>
+                <div class="field"><label><i class="fas fa-share-alt"></i> Compartilhamentos</label><input type="text"
+                    id="tiktok_compartilhamentos" value="{{ redes.tiktok.compartilhamentos }}" class="numeric-input">
+                </div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade min</label><input type="text"
+                    id="tiktok_min_idade_publico" value="{{ redes.tiktok.min_idade_publico }}" class="integer-input">
+                </div>
+                <div class="field"><label><i class="fas fa-calendar-alt"></i> Idade max</label><input type="text"
+                    id="tiktok_max_idade_publico" value="{{ redes.tiktok.max_idade_publico }}" class="integer-input">
+                </div>
+                <div class="field"><label><i class="fas fa-globe-americas"></i> Público Brasil (%)</label><input
+                    type="text" id="tiktok_taxa_publico_brasil" value="{{ redes.tiktok.taxa_publico_brasil }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-venus-mars"></i> Público masculino (%)</label><input
+                    type="text" id="tiktok_taxa_publico_masculino" value="{{ redes.tiktok.taxa_publico_masculino }}"
+                    class="decimal-input"></div>
+                <div class="field"><label><i class="fas fa-tags"></i> Interesses</label><input type="text"
+                    id="tiktok_interesses_publico" value="{{ redes.tiktok.interesses_publico }}"></div>
+                <div class="field"><label><i class="fas fa-film"></i> Tipo de conteúdo</label><input type="text"
+                    id="tiktok_tipo_conteudo" value="{{ redes.tiktok.tipo_conteudo }}"></div>
+                <div class="field"><label><i class="fas fa-calendar-week"></i> Frequência</label><input type="text"
+                    id="tiktok_frequencia_postagem" value="{{ redes.tiktok.frequencia_postagem }}"></div>
+                <div class="field"><label><i class="fas fa-chart-simple"></i> Melhor performance</label><input
+                    type="text" id="tiktok_melhor_performance" value="{{ redes.tiktok.melhor_performance }}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+        <button type="button" class="save-btn" id="saveMetricsBtn" disabled><i class="fas fa-save"></i> Salvar todas as
+          métricas</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Notificação toast -->
+  <div id="toastNotify" class="toast-notify">
+    <i class="fas"></i>
+    <span id="toastMsg"></span>
+  </div>
+
+</body>
+{% endif %}
+</html>
+
+<script src="{{ url_for('static', filename='js/admin_script.js') }}"></script>

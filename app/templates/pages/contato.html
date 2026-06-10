@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+<div class="contact-page">
+    <div class="contact-container">
+        <div class="contact-header">
+            <i class="fas fa-paper-plane"></i>
+            <h1>Entre em Contato</h1>
+            <p>Estamos aqui para ajudar. Escolha o melhor canal para conversarmos.</p>
+        </div>
+
+        <div class="contact-cards">
+            <!-- Email -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>E-mail</h3>
+                <p>Envie sua mensagem e respondemos em até 24h.</p>
+                <a href="mailto:{{ email }}" class="contact-link">{{ email }}</a>
+            </div>
+
+            <!-- Celular / Telefone -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Telefone</h3>
+                <p>Ligue para atendimento comercial.</p>
+                <a href="tel:{{ phone_raw }}" class="contact-link">{{ phone }}</a>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Converse conosco rapidamente pelo WhatsApp.</p>
+                <a href="https://wa.me/{{ phone_raw }}" target="_blank" class="contact-link whatsapp">{{ phone }}</a>
+            </div>
+        </div>
+
+        <!-- Opcional: rede social ou localização -->
+        <div class="contact-note">
+            <i class="fas fa-star-of-life"></i>
+            <span>Resposta ágil de segunda a sexta, das 9h às 18h.</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-content {
+        background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #a855f7 100%);
+    }
+</style>
+{% endblock %}

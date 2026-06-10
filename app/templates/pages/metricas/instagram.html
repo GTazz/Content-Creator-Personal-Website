@@ -1,0 +1,133 @@
+<div class="platform-panel active" id="instagram-panel">
+
+    <div class="metrics-row">
+
+        <div class="big-metric-card card">
+            <a class="social-link" href="https://www.instagram.com/exquil0" target="_blank">
+                <div class="card-header-vertical">
+                    <i class="fab fa-instagram"></i>
+                    <span class="channel-name">@exquil0</span>
+                </div>
+
+                <div class="big-stat">
+                    <span><i class="fas fa-users"></i> Seguidores</span>
+                    <span>{{ redes.instagram.seguidores | format_thousands }}</span>
+                </div>
+                <div class="big-stat">
+                    <span><i class="fas fa-heart"></i> Engajamento</span>
+                    <span>{{ redes.instagram.taxa_engajamento | format_decimal }}%</span>
+                </div>
+                <div class="big-stat">
+                    <span><i class="fas fa-chart-line"></i> Alcance</span>
+                    <span>{{ redes.instagram.alcance | format_thousands }}</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="small-metrics">
+            <div class="small-card card"><i class="fas fa-eye"></i>
+                <div>Visualizações</div><strong>{{ redes.instagram.visualizacoes | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-thumbs-up"></i>
+                <div>Likes</div><strong>{{ redes.instagram.likes | format_thousands }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-comment"></i>
+                <div>Comentários</div><strong>{{ redes.instagram.comentarios | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+            <div class="small-card card"><i class="fas fa-share-alt"></i>
+                <div>Compartilhamentos</div><strong>{{ redes.instagram.compartilhamentos | format_thousands
+                    }}</strong><span>totais</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="info-card card">
+            <h3><i class="fas fa-users"></i> Demografia</h3>
+            <div><span>Idade:</span> {{ redes.instagram.min_idade_publico }}-{{ redes.instagram.max_idade_publico }}
+                anos
+                <div>
+                    <div style="width:75%"></div>
+                </div>
+            </div>
+            <div><span>Localização:</span> Brasil {{ redes.instagram.taxa_publico_brasil | format_decimal }}% <div>
+                    <div style="width:{{ redes.instagram.taxa_publico_brasil }}%"></div>
+                </div>
+            </div>
+            <div><span>Interesses:</span> {{ redes.instagram.interesses_publico }}</div>
+            <div><span>Gênero:</span> {{ (100 - redes.instagram.taxa_publico_masculino) | format_decimal }}% Fem / {{
+                redes.instagram.taxa_publico_masculino | format_decimal }}% Masc <div class="progress-bar-fill">
+                    <div style="width:{{ 100 - redes.instagram.taxa_publico_masculino }}%; background:#ec489a"></div>
+                    <div style="width:{{ redes.instagram.taxa_publico_masculino }}%; background:#3b82f6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="info-card card">
+            <h3><i class="fas fa-video"></i> Conteúdo</h3>
+            <div><span>Tipo:</span> {{ redes.instagram.tipo_conteudo }}</div>
+            <div><span>Melhor performance:</span> {{ redes.instagram.melhor_performance }}</div>
+            <div><span>Frequência:</span> {{ redes.instagram.frequencia_postagem }}</div>
+        </div>
+    </div>
+
+    <div class="last-update">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Última atualização:
+            {{ redes.instagram.data_coleta_dados.strftime('%d/%m/%Y') }}
+        </span>
+    </div>
+
+    <div class="section-header">
+        <i class="fas fa-mobile-alt"></i>
+        <h2>Vídeos Curtos (Reels)</h2>
+    </div>
+    <div class="videos-grid videos-curtos">
+
+        {% set video_id = 'CyCJ7k9OykQ' %}
+        <div class="video-card short">
+            <a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" class="video-thumb-link" target="_blank">
+                <img src="https://instagram.fgru4-1.fna.fbcdn.net/v/t51.71878-15/503022446_24010110265323328_35098360704832640_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=MzIwNzE2OTU2MTE5MDkzNDgwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=RM1Nb30iqVcQ7kNvwFDqn7U&_nc_oc=AdpxuYqBXO-4d_V8v37KVWYJxakZcvcdo2Ly6wENslnosScZnmJg2t__6HWLJAqQI3m8PsJeWMV8qXRG6Rdu7xSD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fgru4-1.fna&_nc_gid=LzOFtv4LJVoaplqB0LOIHw&_nc_ss=7a22e&oh=00_Af84-4xQUB4eaXO0ssL3dkOKWBMeTybcB7chJ7RwNKjnIA&oe=6A2EB6BB"
+                    alt="thumbnail" class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" target="_blank">Fé
+                    nos surtados 🤪</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +2,9M visualizações</div>
+        </div>
+
+        {% set video_id = 'C-awunfP8LM' %}
+        <div class="video-card short">
+            <a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" class="video-thumb-link" target="_blank">
+                <img src="https://instagram.fgru4-1.fna.fbcdn.net/v/t51.71878-15/504190404_724707269929657_6445166078748129262_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=108&ig_cache_key=MzQzMDI2ODM3NTkyNDcyMDMzMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEwODAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=HjWlRko8g4QQ7kNvwENwj0z&_nc_oc=AdrZWJAJN1Y25o-Acdpuw18nQmawTn8SooSJNdr6T6R3T0LwMYiK-3bRDuAWPm1qHWR1A1dLrdld02-J2Gc5qZFL&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fgru4-1.fna&_nc_gid=lJiGI3rCS19BpbZar1yKVw&_nc_ss=7a22e&oh=00_Af-UrK-bGaEvxHl30bViPbzTVLVimNLRP6qeSNcI_oXzQA&oe=6A2E86E5"
+                    alt="thumbnail" class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" target="_blank">a
+                    trend do copo com meu amigo</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +2,4M visualizações</div>
+        </div>
+
+        {% set video_id = 'C3Qn6EKutoW' %}
+        <div class="video-card short">
+            <a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" class="video-thumb-link" target="_blank">
+                <img src="https://instagram.fgru4-1.fna.fbcdn.net/v/t51.71878-15/503330063_1772274256986497_8423179587368813127_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&ig_cache_key=MzMwMTMxNDA0MDg4MTE0MjI5NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=eddFOUNYkasQ7kNvwENDxHD&_nc_oc=AdpxwEX9ZEU6MN9ixeB2c-Sd3i4OObTfkJUuWjEBwcgpzznp9Nfz2lu2_RaiNwe6nIU5WpBsxLtkzld4KMeCozb8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fgru4-1.fna&_nc_gid=mSa0ZuV9m32hLFsKvNj2iw&_nc_ss=7a22e&oh=00_Af8j0HZWOdynvNzYU21FCZgdlSEqoyQRa78h2LZaF-l-pg&oe=6A2EA7CC"
+                    alt="thumbnail" class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" target="_blank">É
+                    Chico…</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +2,3M visualizações</div>
+        </div>
+
+        {% set video_id = 'DU6wTiaDhAC' %}
+        <div class="video-card short">
+            <a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/" class="video-thumb-link" target="_blank">
+                <img src="https://instagram.fgru4-1.fna.fbcdn.net/v/t51.71878-15/639723147_1870056140311100_5380016712908936263_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=107&ig_cache_key=MzgzNTU5MDQ4MTUwNjM0MDg2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=gqzZs9R1sRwQ7kNvwG-O2bh&_nc_oc=AdqcxBw_LsIcQn-gjHRU9_XSNSSNApwWMfxuAgxh3rXIuBHYkdWGWHOskqt6wIXqAnSCG81Pqg-Yk4oLrIZIonp5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fgru4-1.fna&_nc_gid=QYM17iSvfoWE-RgYS5OOYQ&_nc_ss=7a22e&oh=00_Af-2IW840iGYnKRUJ3OmTqMSLyIfcexvu0V_SOPmNwqnqQ&oe=6A2E80A3"
+                    alt="thumbnail" class="video-thumb vertical">
+            </a>
+            <div class="video-title"><a href="https://www.instagram.com/exquil0/reel/{{ video_id }}/"
+                    target="_blank">Vaiii bobo</a></div>
+            <div class="video-stats"><i class="fas fa-eye"></i> +1,1M visualizações</div>
+        </div>
+    </div>
+
+</div>

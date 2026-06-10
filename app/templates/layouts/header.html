@@ -1,0 +1,60 @@
+<header class="dashboard-header">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo-area">
+      <a href="{{ url_for('public.index') }}" class="logo-link">
+        <i class="fas fa-masks-theater"></i>
+        <span>Exquilo<span class="logo-dot">.</span></span>
+      </a>
+    </div>
+
+    <!-- Menu de navegação (links internos) – versão desktop + mobile (via hambúrguer) -->
+    <!-- Botão de contato DENTRO do menu (aparece apenas no mobile) -->
+    <nav class="nav-menu" id="navMenu">
+      <div class="mobile-contact-btn">
+        <a href="{{ url_for('public.contato') }}" class="btn-contato btn-contato-mobile">
+          <i class="fas fa-envelope"></i> Entrar em Contato
+        </a>
+      </div>
+      <ul class="nav-links">
+
+        <li>
+          <a href="{{ url_for('public.index') }}" class="{% if active_page == 'public.index' %}active{% endif %}">
+            Início
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('public.metricas') }}" class="{% if active_page == 'public.metricas' %}active{% endif %}">
+            Métricas
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('public.parcerias') }}"
+            class="{% if active_page == 'public.parcerias' %}active{% endif %}">
+            Parcerias
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Botão de contato FORA do menu (sempre visível) – irá esticar no mobile -->
+    <div class="header-actions">
+      <a href="{{ url_for('public.contato') }}" class="btn-contato">
+        <i class="fas fa-envelope"></i> Entrar em Contato
+      </a>
+    </div>
+
+    <!-- Botão hambúrguer (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Overlay para fechar o menu ao clicar fora -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+</header>
