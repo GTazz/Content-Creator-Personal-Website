@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_style.css') }}">
 </head>
-{% if db_error %}
-{% include 'layouts/db_error.html' %}
-{% else %}
 <body>
   <div class="admin-container">
     <div class="admin-header">
@@ -21,7 +18,7 @@
     <!-- Ferramentas JSON -->
     <div class="json-tools">
       <div class="json-header">
-        <h3><i class="fas fa-code"></i> Importar/Exportar via JSON (hierárquico)</h3>
+        <h3><i class="fas fa-code"></i> Importar via JSON (hierárquico)</h3>
         <div class="json-buttons">
           <label class="json-btn" for="uploadJsonInput"><i class="fas fa-upload"></i> Upload JSON</label>
           <input type="file" id="uploadJsonInput" accept="application/json" style="display: none;">
@@ -238,7 +235,6 @@
   </div>
 
 </body>
-{% endif %}
 </html>
 
 <script src="{{ url_for('static', filename='js/admin_script.js') }}"></script>
